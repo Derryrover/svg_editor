@@ -3,6 +3,8 @@ import RoseTreeItem
 import RoseTreeBuilder exposing(result)
 import RoseTreeHTML
 import Html exposing (..)
+import Html.Attributes exposing (style)
+import SvgDisplay
 
 main =
   Html.program
@@ -47,7 +49,9 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ --Html.map MsgItem (RoseTreeItem.view model.item)
-     ul [] [Html.map HTMLMessage (RoseTreeHTML.view model.roseTree)]
+  div [] [
+    div [style [("float" , "left")]]
+      [ --Html.map MsgItem (RoseTreeItem.view model.item)
+        ul [] [Html.map HTMLMessage (RoseTreeHTML.view model.roseTree)] ]
+    , div [style [("float" , "left")]] [SvgDisplay.view (model.roseTree.tree)]
     ]
