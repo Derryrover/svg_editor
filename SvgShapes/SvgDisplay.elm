@@ -1,4 +1,4 @@
-module SvgDisplay exposing (..)
+module SvgDisplay exposing (view)
 
 import RoseTree exposing(..)
 import RoseTreeItem exposing (..)
@@ -8,21 +8,17 @@ import Svg.Attributes exposing (..)
 
 import SvgCircle exposing(..)
 
-
-a=1
-
-show = 1
-
-view tree = svg [ viewBox "0 0 100 100", width "300px" ]
-      [ circle [ cx "50", cy "50", r "45", fill "#FF7911" ] []
-      , drawLayer tree
-      ]
+view tree = svg [ viewBox "0 0 100 100", width "300px" ] [drawLayer tree]
 
 drawLayer tree =
   let
     treeCircle = (RoseTree.root tree).item
     children = RoseTree.children tree
+    translateXY = "translate("++ (toString treeCircle.x) ++" "++ (toString treeCircle.y) ++")"
   in
-    g [ transform ("translate("++ (toString treeCircle.x) ++" "++ (toString treeCircle.y) ++")") ]
-      (List.concat [[ circle [ cx "0", cy "0", r "5", fill "#FF0000" ] []]
-      , (List.map drawLayer children)])
+    g
+      [transform translateXY]
+      ( ( circle [cx "0", cy "0", r "5", fill "#FF0000"][])
+        ::
+        (List.map drawLayer children) )
+

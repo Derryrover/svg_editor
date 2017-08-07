@@ -16,27 +16,39 @@ main =
     , subscriptions = subscriptions
     }
 
---type alias Model = Int
+subscriptions : Model -> Sub Msg
+subscriptions model =
+  Sub.none
+
+
+--Dice is here so that we have a wrling example about how to pass task messages over the tree structure
 type alias Model =
-  { dice: Dice.Model
-  , x: Int
+  {
+    --dice: Dice.Model,
+    x: Int
   , y: Int }
 
 init :Int -> (Model, Cmd Msg)
-init n = ({ dice = n
-          , x = 1
-          , y = 1 }, Cmd.none)
+init n = ({ x = 1
+          , y = 1
+          --, dice = n
+          }, Cmd.none)
 
 
 type Msg
-  = Dice Dice.Msg | X String | Y String
+  =
+    X String
+  | Y String
+  --| Dice Dice.Msg
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
+    {-
     Dice d ->
       let (diceModel, diceCommand) = Dice.update d model.dice
       in ({model | dice = diceModel},Cmd.map Dice diceCommand)
+      -}
     X strX ->
       let res = String.toInt strX--ParseInt.parseInt strX
       in
@@ -55,9 +67,7 @@ update msg model =
             ({model | y = value}, Cmd.none)
 
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
-  Sub.none
+
 
 
 view : Model -> Html Msg
@@ -68,8 +78,5 @@ view model =
       , label [] [text "Y"]
       , input [onInput Y] []
       , div [] [text ("x:" ++ (toString model.x) ++", y:"++(toString model.y))]
-      , Html.map Dice (Dice.view model.dice)
+      --, Html.map Dice (Dice.view model.dice)
       ]
-
-
-    --style ["height" => "100%", "display"=>"flex", "justify-content"=> "center", "align-items"=>"center"]

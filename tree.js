@@ -10083,12 +10083,40 @@ var _user$project$RoseTreeHTML$view = function (_p0) {
 				{
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$map,
-						_user$project$RoseTreeHTML$Direction(
-							_user$project$RoseTree$root(_p3)),
-						_user$project$RoseTreeItem$view(
-							_user$project$RoseTree$root(_p3))),
-					_1: {ctor: '[]'}
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(
+								A2(
+									_user$project$RoseTreeHTML$New,
+									_user$project$RoseTree$root(_p3),
+									'circle')),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$style(
+									{
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'float', _1: 'right'},
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('x'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$map,
+							_user$project$RoseTreeHTML$Direction(
+								_user$project$RoseTree$root(_p3)),
+							_user$project$RoseTreeItem$view(
+								_user$project$RoseTree$root(_p3))),
+						_1: {ctor: '[]'}
+					}
 				}),
 			_1: {
 				ctor: '::',
@@ -10271,31 +10299,8 @@ var _user$project$SvgDisplay$view = function (tree) {
 		},
 		{
 			ctor: '::',
-			_0: A2(
-				_elm_lang$svg$Svg$circle,
-				{
-					ctor: '::',
-					_0: _elm_lang$svg$Svg_Attributes$cx('50'),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$svg$Svg_Attributes$cy('50'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$svg$Svg_Attributes$r('45'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$svg$Svg_Attributes$fill('#FF7911'),
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				},
-				{ctor: '[]'}),
-			_1: {
-				ctor: '::',
-				_0: _user$project$SvgDisplay$drawLayer(tree),
-				_1: {ctor: '[]'}
-			}
+			_0: _user$project$SvgDisplay$drawLayer(tree),
+			_1: {ctor: '[]'}
 		});
 };
 var _user$project$SvgDisplay$show = 1;
