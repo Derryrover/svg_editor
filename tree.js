@@ -10031,86 +10031,88 @@ var _user$project$RoseTreeHTML$view = function (_p0) {
 	var _p1 = _p0;
 	var _p2 = _p1.tree;
 	return A2(
-		_elm_lang$html$Html$li,
+		_elm_lang$html$Html$div,
 		{ctor: '[]'},
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$div,
-				{ctor: '[]'},
+				_elm_lang$html$Html$button,
 				{
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$button,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(
-								A2(
-									_user$project$RoseTreeHTML$New,
-									_user$project$RoseTree$root(_p2),
-									'circle')),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$style(
-									{
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'float', _1: 'right'},
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('x'),
-							_1: {ctor: '[]'}
-						}),
+					_0: _elm_lang$html$Html_Events$onClick(
+						A2(
+							_user$project$RoseTreeHTML$New,
+							_user$project$RoseTree$root(_p2),
+							'circle')),
 					_1: {
 						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$map,
-							_user$project$RoseTreeHTML$Direction(
-								_user$project$RoseTree$root(_p2)),
-							_user$project$RoseTreeItem$view(
-								_user$project$RoseTree$root(_p2))),
+						_0: _elm_lang$html$Html_Attributes$style(
+							{
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'float', _1: 'right'},
+								_1: {ctor: '[]'}
+							}),
 						_1: {ctor: '[]'}
 					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('x'),
+					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$ul,
-					{ctor: '[]'},
-					_elm_lang$core$List$concat(
-						{
-							ctor: '::',
-							_0: {
+					_elm_lang$html$Html$map,
+					_user$project$RoseTreeHTML$Direction(
+						_user$project$RoseTree$root(_p2)),
+					_user$project$RoseTreeItem$view(
+						_user$project$RoseTree$root(_p2))),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$ul,
+						{ctor: '[]'},
+						_elm_lang$core$List$concat(
+							{
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$li,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _user$project$RoseTreeHTML$selectBuilder(_p2),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							},
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$core$List$map,
-									_user$project$RoseTreeHTML$view,
-									A2(
+								_0: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$li,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _user$project$RoseTreeHTML$selectBuilder(_p2),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								},
+								_1: {
+									ctor: '::',
+									_0: A2(
 										_elm_lang$core$List$map,
-										function (tree) {
-											return {tree: tree};
+										function (model) {
+											return A2(
+												_elm_lang$html$Html$li,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: _user$project$RoseTreeHTML$view(model),
+													_1: {ctor: '[]'}
+												});
 										},
-										_user$project$RoseTree$children(_p2))),
-								_1: {ctor: '[]'}
-							}
-						})),
-				_1: {ctor: '[]'}
+										A2(
+											_elm_lang$core$List$map,
+											function (tree) {
+												return {tree: tree};
+											},
+											_user$project$RoseTree$children(_p2))),
+									_1: {ctor: '[]'}
+								}
+							})),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
