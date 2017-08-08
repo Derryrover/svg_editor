@@ -9666,19 +9666,52 @@ var _user$project$RoseTree$map = F2(
 				_p11._1));
 	});
 
-var _user$project$SvgCircle$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$none;
-};
+var _user$project$SvgCircle$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'X') {
+			var res = _elm_lang$core$String$toInt(_p0._0);
+			var _p1 = res;
+			if (_p1.ctor === 'Err') {
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			} else {
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{x: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			}
+		} else {
+			var res = _elm_lang$core$String$toInt(_p0._0);
+			var _p2 = res;
+			if (_p2.ctor === 'Err') {
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			} else {
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{y: _p2._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			}
+		}
+	});
 var _user$project$SvgCircle$init = function (n) {
 	return {
 		ctor: '_Tuple2',
-		_0: {dice: n, x: 1, y: 1},
+		_0: {x: 1, y: 1},
 		_1: _elm_lang$core$Platform_Cmd$none
 	};
 };
-var _user$project$SvgCircle$Model = F3(
-	function (a, b, c) {
-		return {dice: a, x: b, y: c};
+var _user$project$SvgCircle$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$SvgCircle$Model = F2(
+	function (a, b) {
+		return {x: a, y: b};
 	});
 var _user$project$SvgCircle$Y = function (a) {
 	return {ctor: 'Y', _0: a};
@@ -9686,54 +9719,6 @@ var _user$project$SvgCircle$Y = function (a) {
 var _user$project$SvgCircle$X = function (a) {
 	return {ctor: 'X', _0: a};
 };
-var _user$project$SvgCircle$Dice = function (a) {
-	return {ctor: 'Dice', _0: a};
-};
-var _user$project$SvgCircle$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'Dice':
-				var _p1 = A2(_user$project$Dice$update, _p0._0, model.dice);
-				var diceModel = _p1._0;
-				var diceCommand = _p1._1;
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{dice: diceModel}),
-					_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$SvgCircle$Dice, diceCommand)
-				};
-			case 'X':
-				var res = _elm_lang$core$String$toInt(_p0._0);
-				var _p2 = res;
-				if (_p2.ctor === 'Err') {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{x: _p2._0}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			default:
-				var res = _elm_lang$core$String$toInt(_p0._0);
-				var _p3 = res;
-				if (_p3.ctor === 'Err') {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-				} else {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{y: _p3._0}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-		}
-	});
 var _user$project$SvgCircle$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -9807,14 +9792,7 @@ var _user$project$SvgCircle$view = function (model) {
 													_elm_lang$core$Basics$toString(model.y))))),
 									_1: {ctor: '[]'}
 								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$map,
-									_user$project$SvgCircle$Dice,
-									_user$project$Dice$view(model.dice)),
-								_1: {ctor: '[]'}
-							}
+							_1: {ctor: '[]'}
 						}
 					}
 				}
@@ -9962,12 +9940,11 @@ var _user$project$RoseTreeHTML$selectItems = {
 	}
 };
 var _user$project$RoseTreeHTML$init = function (tree) {
-	return {tree: tree, idHideSelect: _elm_lang$core$Maybe$Nothing};
+	return {tree: tree};
 };
-var _user$project$RoseTreeHTML$Model = F2(
-	function (a, b) {
-		return {tree: a, idHideSelect: b};
-	});
+var _user$project$RoseTreeHTML$Model = function (a) {
+	return {tree: a};
+};
 var _user$project$RoseTreeHTML$New = F2(
 	function (a, b) {
 		return {ctor: 'New', _0: a, _1: b};
@@ -10042,36 +10019,17 @@ var _user$project$RoseTreeHTML$selectBuilder = function (tree) {
 				}
 			}));
 };
-var _user$project$RoseTreeHTML$doNeedSelect = F2(
-	function (tree, idHideSelect) {
-		return {
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$li,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _user$project$RoseTreeHTML$selectBuilder(tree),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		};
-	});
 var _user$project$RoseTreeHTML$CreatedRandom = F2(
 	function (a, b) {
 		return {ctor: 'CreatedRandom', _0: a, _1: b};
 	});
-var _user$project$RoseTreeHTML$Add = function (a) {
-	return {ctor: 'Add', _0: a};
-};
 var _user$project$RoseTreeHTML$Direction = F2(
 	function (a, b) {
 		return {ctor: 'Direction', _0: a, _1: b};
 	});
 var _user$project$RoseTreeHTML$view = function (_p0) {
 	var _p1 = _p0;
-	var _p3 = _p1.tree;
-	var _p2 = _p1.idHideSelect;
+	var _p2 = _p1.tree;
 	return A2(
 		_elm_lang$html$Html$li,
 		{ctor: '[]'},
@@ -10089,7 +10047,7 @@ var _user$project$RoseTreeHTML$view = function (_p0) {
 							_0: _elm_lang$html$Html_Events$onClick(
 								A2(
 									_user$project$RoseTreeHTML$New,
-									_user$project$RoseTree$root(_p3),
+									_user$project$RoseTree$root(_p2),
 									'circle')),
 							_1: {
 								ctor: '::',
@@ -10112,9 +10070,9 @@ var _user$project$RoseTreeHTML$view = function (_p0) {
 						_0: A2(
 							_elm_lang$html$Html$map,
 							_user$project$RoseTreeHTML$Direction(
-								_user$project$RoseTree$root(_p3)),
+								_user$project$RoseTree$root(_p2)),
 							_user$project$RoseTreeItem$view(
-								_user$project$RoseTree$root(_p3))),
+								_user$project$RoseTree$root(_p2))),
 						_1: {ctor: '[]'}
 					}
 				}),
@@ -10126,7 +10084,18 @@ var _user$project$RoseTreeHTML$view = function (_p0) {
 					_elm_lang$core$List$concat(
 						{
 							ctor: '::',
-							_0: A2(_user$project$RoseTreeHTML$doNeedSelect, _p3, _p2),
+							_0: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$li,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _user$project$RoseTreeHTML$selectBuilder(_p2),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							},
 							_1: {
 								ctor: '::',
 								_0: A2(
@@ -10135,9 +10104,9 @@ var _user$project$RoseTreeHTML$view = function (_p0) {
 									A2(
 										_elm_lang$core$List$map,
 										function (tree) {
-											return {tree: tree, idHideSelect: _p2};
+											return {tree: tree};
 										},
-										_user$project$RoseTree$children(_p3))),
+										_user$project$RoseTree$children(_p2))),
 								_1: {ctor: '[]'}
 							}
 						})),
@@ -10147,17 +10116,17 @@ var _user$project$RoseTreeHTML$view = function (_p0) {
 };
 var _user$project$RoseTreeHTML$update = F2(
 	function (msg, model) {
-		var _p4 = msg;
-		switch (_p4.ctor) {
+		var _p3 = msg;
+		switch (_p3.ctor) {
 			case 'Direction':
-				var _p8 = _p4._1;
-				var _p7 = _p4._0;
+				var _p7 = _p3._1;
+				var _p6 = _p3._0;
 				var roseTreeCmds = A2(
 					_user$project$RoseTree$map,
 					function (n) {
-						var _p5 = A3(_user$project$RoseTreeHTML$updateHelperRose, _p7, _p8, n);
-						var rose = _p5._0;
-						var cmd = _p5._1;
+						var _p4 = A3(_user$project$RoseTreeHTML$updateHelperRose, _p6, _p7, n);
+						var rose = _p4._0;
+						var cmd = _p4._1;
 						return cmd;
 					},
 					model.tree);
@@ -10165,9 +10134,9 @@ var _user$project$RoseTreeHTML$update = F2(
 				var updatedRose = A2(
 					_user$project$RoseTree$map,
 					function (n) {
-						var _p6 = A3(_user$project$RoseTreeHTML$updateHelperRose, _p7, _p8, n);
-						var rose = _p6._0;
-						var cmd = _p6._1;
+						var _p5 = A3(_user$project$RoseTreeHTML$updateHelperRose, _p6, _p7, n);
+						var rose = _p5._0;
+						var cmd = _p5._1;
 						return rose;
 					},
 					model.tree);
@@ -10178,51 +10147,38 @@ var _user$project$RoseTreeHTML$update = F2(
 						{tree: updatedRose}),
 					_1: A2(
 						_elm_lang$core$Platform_Cmd$map,
-						_user$project$RoseTreeHTML$Direction(_p7),
+						_user$project$RoseTreeHTML$Direction(_p6),
 						_elm_lang$core$Platform_Cmd$batch(cmdList))
 				};
 			case 'CreatedRandom':
-				var _p9 = _p4._0;
+				var _p8 = _p3._0;
 				var func = _user$project$RoseTree$addChild(
 					_user$project$RoseTree$singleton(
-						_user$project$RoseTreeItem$init(_p4._1)));
+						_user$project$RoseTreeItem$init(_p3._1)));
 				var tester = function (tree) {
 					return A2(
 						_user$project$RoseTreeItem$compare,
-						_p9,
+						_p8,
 						_user$project$RoseTree$root(tree));
 				};
 				var curry = A2(_user$project$RoseTree$findAndUpdate, tester, func);
 				return {
 					ctor: '_Tuple2',
-					_0: {
-						tree: curry(model.tree),
-						idHideSelect: _elm_lang$core$Maybe$Nothing
-					},
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							tree: curry(model.tree)
+						}),
 					_1: _user$project$RoseTreeHTMLPorts$setSelectToDefault(
-						_elm_lang$core$Basics$toString(_p9.id))
+						_elm_lang$core$Basics$toString(_p8.id))
 				};
-			case 'Add':
+			default:
 				return {
 					ctor: '_Tuple2',
 					_0: model,
 					_1: A2(
 						_elm_lang$core$Random$generate,
-						_user$project$RoseTreeHTML$CreatedRandom(_p4._0),
-						A2(_elm_lang$core$Random$int, 1, 1000000))
-				};
-			default:
-				var _p10 = _p4._0;
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							idHideSelect: _elm_lang$core$Maybe$Just(_p10)
-						}),
-					_1: A2(
-						_elm_lang$core$Random$generate,
-						_user$project$RoseTreeHTML$CreatedRandom(_p10),
+						_user$project$RoseTreeHTML$CreatedRandom(_p3._0),
 						A2(_elm_lang$core$Random$int, 1, 1000000))
 				};
 		}
@@ -10231,59 +10187,50 @@ var _user$project$RoseTreeHTML$update = F2(
 var _user$project$SvgDisplay$drawLayer = function (tree) {
 	var children = _user$project$RoseTree$children(tree);
 	var treeCircle = _user$project$RoseTree$root(tree).item;
+	var translateXY = A2(
+		_elm_lang$core$Basics_ops['++'],
+		'translate(',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Basics$toString(treeCircle.x),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				' ',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(treeCircle.y),
+					')'))));
 	return A2(
 		_elm_lang$svg$Svg$g,
 		{
 			ctor: '::',
-			_0: _elm_lang$svg$Svg_Attributes$transform(
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					'translate(',
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						_elm_lang$core$Basics$toString(treeCircle.x),
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							' ',
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								_elm_lang$core$Basics$toString(treeCircle.y),
-								')'))))),
+			_0: _elm_lang$svg$Svg_Attributes$transform(translateXY),
 			_1: {ctor: '[]'}
 		},
-		_elm_lang$core$List$concat(
-			{
-				ctor: '::',
-				_0: {
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$svg$Svg$circle,
+				{
 					ctor: '::',
-					_0: A2(
-						_elm_lang$svg$Svg$circle,
-						{
+					_0: _elm_lang$svg$Svg_Attributes$cx('0'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$cy('0'),
+						_1: {
 							ctor: '::',
-							_0: _elm_lang$svg$Svg_Attributes$cx('0'),
+							_0: _elm_lang$svg$Svg_Attributes$r('5'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$svg$Svg_Attributes$cy('0'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$svg$Svg_Attributes$r('5'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$svg$Svg_Attributes$fill('#FF0000'),
-										_1: {ctor: '[]'}
-									}
-								}
+								_0: _elm_lang$svg$Svg_Attributes$fill('#FF0000'),
+								_1: {ctor: '[]'}
 							}
-						},
-						{ctor: '[]'}),
-					_1: {ctor: '[]'}
+						}
+					}
 				},
-				_1: {
-					ctor: '::',
-					_0: A2(_elm_lang$core$List$map, _user$project$SvgDisplay$drawLayer, children),
-					_1: {ctor: '[]'}
-				}
-			}));
+				{ctor: '[]'}),
+			_1: A2(_elm_lang$core$List$map, _user$project$SvgDisplay$drawLayer, children)
+		});
 };
 var _user$project$SvgDisplay$view = function (tree) {
 	return A2(
@@ -10303,8 +10250,6 @@ var _user$project$SvgDisplay$view = function (tree) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$SvgDisplay$show = 1;
-var _user$project$SvgDisplay$a = 1;
 
 var _user$project$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;

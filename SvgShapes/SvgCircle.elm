@@ -1,7 +1,6 @@
 module SvgCircle exposing (..)
 
 import Dice exposing(..)
-
 import Html exposing (..)
 import Html.Events exposing (..)
 import Html.Attributes exposing (style)
@@ -34,21 +33,26 @@ init n = ({ x = 1
           --, dice = n
           }, Cmd.none)
 
-
 type Msg
   =
     X String
   | Y String
   --| Dice Dice.Msg
 
+view : Model -> Html Msg
+view model =
+  div [ style [("border-style" , "solid")]] [
+        label [] [text "X"]
+      , input [onInput X] []
+      , label [] [text "Y"]
+      , input [onInput Y] []
+      , div [] [text ("x:" ++ (toString model.x) ++", y:"++(toString model.y))]
+      --, Html.map Dice (Dice.view model.dice)
+      ]
+
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
-    {-
-    Dice d ->
-      let (diceModel, diceCommand) = Dice.update d model.dice
-      in ({model | dice = diceModel},Cmd.map Dice diceCommand)
-      -}
     X strX ->
       let res = String.toInt strX--ParseInt.parseInt strX
       in
@@ -65,18 +69,10 @@ update msg model =
             (model, Cmd.none)
           Result.Ok value ->
             ({model | y = value}, Cmd.none)
+    {-
+    Dice d ->
+      let (diceModel, diceCommand) = Dice.update d model.dice
+      in ({model | dice = diceModel},Cmd.map Dice diceCommand)
+      -}
 
 
-
-
-
-view : Model -> Html Msg
-view model =
-  div [ style [("border-style" , "solid")]] [
-        label [] [text "X"]
-      , input [onInput X] []
-      , label [] [text "Y"]
-      , input [onInput Y] []
-      , div [] [text ("x:" ++ (toString model.x) ++", y:"++(toString model.y))]
-      --, Html.map Dice (Dice.view model.dice)
-      ]
