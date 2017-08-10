@@ -50,8 +50,9 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
   div [] [
-    div [style [("float" , "left")]]
+    div [style [("float" , "left"),("display", "inline-block")]]
       [ --Html.map MsgItem (RoseTreeItem.view model.item)
-        ul [] [Html.map HTMLMessage (RoseTreeHTML.view model.roseTree)] ]
+        --ul [] [Html.map HTMLMessage (RoseTreeHTML.view model.roseTree)] ]
+        Html.map HTMLMessage (RoseTreeHTML.view model.roseTree) ]
     , div [style [("float" , "left")]] [SvgDisplay.view (model.roseTree.tree)]
     ]

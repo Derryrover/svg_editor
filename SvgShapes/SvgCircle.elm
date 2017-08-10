@@ -3,7 +3,7 @@ module SvgCircle exposing (..)
 import Dice exposing(..)
 import Html exposing (..)
 import Html.Events exposing (..)
-import Html.Attributes exposing (style)
+import Html.Attributes exposing (style, value)
 import Random
 import ParseInt
 
@@ -41,14 +41,17 @@ type Msg
 
 view : Model -> Html Msg
 view model =
-  div [ style [("border-style" , "solid")]] [
-        label [] [text "X"]
-      , input [onInput X] []
-      , label [] [text "Y"]
-      , input [onInput Y] []
-      , div [] [text ("x:" ++ (toString model.x) ++", y:"++(toString model.y))]
-      --, Html.map Dice (Dice.view model.dice)
-      ]
+  div
+    [ style [("display", "inline-block")]] --("border-style" , "solid"),
+    [ div []
+      [ label [style []] [text "X"]
+      , input [style [("width", "50px")], onInput X, value (toString model.x)] []]
+    , div []
+      [ label [style []] [text "Y"]
+      , input [style [("width", "50px")], onInput Y, value (toString model.y)] []]
+    --, div [] [text ("x:" ++ (toString model.x) ++", y:"++(toString model.y))]
+    --, Html.map Dice (Dice.view model.dice)
+    ]
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
