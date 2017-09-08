@@ -1,0 +1,41 @@
+ul, li{
+
+
+
+    /* space left before bullet*/
+    /*-webkit-padding-start: 16px;*/
+
+    /*space above first bullet*/
+    -webkit-margin-before: 0px;
+    /*space below lst bullet*/
+    -webkit-margin-after: 0px;
+
+    /*for vertical align bullet doesnot work because should be set on span inside li*/
+    /*vertical-align: text-top;*/
+
+    /*doesnot make vertical aligning of element better*/
+    /*list-style-position: inside;*/
+
+  }
+
+  li {
+
+    /*make bullet filled circle*/
+    /*list-style-type: disc;*/
+    list-style-type: none;
+  }
+
+  li span {
+    /* spacing between bullet nd content */
+    position: relative;
+    margin-left: -13px; /*linearly correlated with label width*/
+    /*margin-left: -36px;*/
+
+    /*make sure bullet is on first line*/
+    /*vertical-align: text-top;*/
+    /*next line actully needed, but does not work with next topic "make sure spn fills space all the way to right"*/
+    /*display: inline-block;*/
+
+    /*make sure spn fills space all the way to right*/
+    display: block;
+  }

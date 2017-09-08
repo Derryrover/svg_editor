@@ -1,69 +1,11 @@
 <body>
+
 <div id="tree"></div>
-<script src="tree.js"></script>
-<script>
-    var node = document.getElementById('tree');
-    var app = Elm.Main.embed(node);
 
-	// Note: if your Elm module is named "MyThing.Root" you
-    // would call "Elm.MyThing.Root.embed(node)" instead.
+<script src="main.js"></script>
+<script src="js/import_elm_and_ports.js"></script>
 
-	//var app = Elm.RubicsCube.fullscreen();
+<link rel="stylesheet" type="text/css" href="css/tree_list.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/tree_style.css" media="screen" />
 
-	app.ports.setSelectToDefault.subscribe(function(id) {
-		console.log(id);
-		var element = document.getElementById(id);
-		console.log(element);
-		element.value = "select new item";
-    });
-
-
-
-
-</script>
-
-<style>
-
-  ul, li{
-
-
-
-    /* space left before bullet*/
-    -webkit-padding-start: 18px;
-
-    /*space above first bullet*/
-    -webkit-margin-before: 0px;
-    /*space below lst bullet*/
-    -webkit-margin-after: 0px;
-
-    /*for vertical align bullet doesnot work because should be set on span inside li*/
-    /*vertical-align: text-top;*/
-
-    /*doesnot make vertical aligning of element better*/
-    /*list-style-position: inside;*/
-
-  }
-
-  li {
-    /*display: inline-block;*/
-
-    /*make bullet filled circle*/
-    list-style-type: disc;
-  }
-
-  li span {
-    /* spacing between bullet nd content */
-    position: relative;
-    margin-left: -24px;
-
-    /*make sure bullet is on first line*/
-    vertical-align: text-top;
-    /*next line actully needed, but does not work with next topic "make sure spn fills space all the way to right"*/
-    /*display: inline-block;*/
-
-    /*make sure spn fills space all the way to right*/
-    display: block;
-  }
-
-</style>
 </body>

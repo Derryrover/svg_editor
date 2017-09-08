@@ -1,0 +1,58 @@
+.odd {
+  background-color: #bad4ba;
+}
+
+.even {
+  background-color: #bad4da;
+}
+
+.svg_input_general {
+  width: 60px;
+  height: 22px;
+  margin: 1px;
+  margin-top: 0px;
+}
+
+/* different inputs different size */
+/*
+.svg_xy_input {
+width: 60px;
+}
+
+.new_tree_child_select {
+width: 61px;
+}
+*/
+
+label{
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 25px;
+  text-align: right;
+}
+input, select {
+  display: inline-block;
+  float: left;
+}
+
+
+.svg_circle_input_whole_item {
+  display: inline-block;
+}
+.div_new_tree_child_select {
+  display: inline-block;
+}
+
+.tree_node {
+  border-style: solid;
+  padding: 5px;
+  margin-top: 2px;
+  border-color: white;
+  border-width: 2px;
+}
+
+.invisible_text {
+  color: #000; /* Fallback for older browsers */
+  color: rgba(0, 0, 0, 0);
+}

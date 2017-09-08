@@ -3,7 +3,7 @@ module SvgCircle exposing (..)
 import Dice exposing(..)
 import Html exposing (..)
 import Html.Events exposing (..)
-import Html.Attributes exposing (style, value)
+import Html.Attributes exposing (value, class)
 import Random
 import ParseInt
 
@@ -42,13 +42,19 @@ type Msg
 view : Model -> Html Msg
 view model =
   div
-    [ style [("display", "inline-block")]] --("border-style" , "solid"),
+    [ class "svg_circle_input_whole_item"] --("border-style" , "solid"),
     [ div []
-      [ label [style []] [text "X"]
-      , input [style [("width", "50px")], onInput X, value (toString model.x)] []]
+      [ label [] [text "X"]
+      , input
+        [ onInput X
+        , value (toString model.x)
+        , class "svg_input_general svg_xy_input"] []]
     , div []
-      [ label [style []] [text "Y"]
-      , input [style [("width", "50px")], onInput Y, value (toString model.y)] []]
+      [ label [] [text "Y"]
+      , input
+       [ onInput Y
+       , value (toString model.y)
+       , class "svg_input_general svg_xy_input"] []]
     --, div [] [text ("x:" ++ (toString model.x) ++", y:"++(toString model.y))]
     --, Html.map Dice (Dice.view model.dice)
     ]
